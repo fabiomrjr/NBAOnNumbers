@@ -1,0 +1,1 @@
+connectionString='mysql+pymysql://sa:RomuloJalim70@localhost:3306/nflonnumbers'
