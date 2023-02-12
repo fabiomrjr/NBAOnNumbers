@@ -1,23 +1,18 @@
-from scrapers.league_scrap import LeagueScheduleScrap
+from scrapers.basketball_reference.br_league_scrap import BasketballReferenceLeagueScheduleScrap
+from scrapers.basketball_reference.br_game_scrap import BasketballReferenceGameScrap
+from scrapers.nba.nba_schedule_scrap import NBAScheduleScrap
 from datetime import datetime as dt
-#from NFLScrapping.builder.team_builder import TeamBuilder
+from util import util
 
 #db().createTables()
-#TeamBuilder().createDefaultTeams()
-#BuildTeam().check()
-#array = BuildGame().check('https://www.pro-football-reference.com/boxscores/201909050chi.htm')
 
-
-# start 1 and end 16 (Weeks)
-games = LeagueScheduleScrap().check()
-#
-#i = 0
-#total = len(games)
 startDate = dt.now()
-#for gameItem in games:
-#    array = BuildGame().check(gameItem)
-#    i+=1
-#    print("Termina jogo " + str(i) + " de um total de " + str(total))
-#
+gamedf = NBAScheduleScrap().checkAllSchedule()
+#leagueScheduledf = BasketballReferenceLeagueScheduleScrap().checkAllSchedule()
+
+##for link in leagueScheduledf.get('BoxScoreLink'):
+##    gamedf = GameScrap().check(link)
+#gamedf = BasketballReferenceGameScrap().check("/boxscores/202210180GSW.html")
+
 endDate = dt.now()
 print("Finish Game Builder. Seconds " + str((endDate - startDate).total_seconds()))
