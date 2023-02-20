@@ -49,10 +49,12 @@ class db():
         )
 
         player_game_statistic = Table(
-            'player_statistic', self.meta,
+            'player_game_statistic', self.meta,
             Column('id_player_game_statistic', Integer, primary_key=True, autoincrement=True),
             Column('id_player', Integer),
             Column('id_game', Integer),
+            Column('id_team', Integer),
+            
             Column('min_play', TIME),
             Column('fg', Integer),
             Column('fga', Integer),
@@ -77,7 +79,7 @@ class db():
         )
 
         team_game_statistic = Table(
-            'player_game_statistic', self.meta,
+            'team_game_statistic', self.meta,
             Column('id_team_game_statistic', Integer, primary_key=True, autoincrement=True),
             Column('id_team', Integer),
             Column('id_game', Integer),

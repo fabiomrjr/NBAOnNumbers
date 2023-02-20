@@ -24,8 +24,8 @@ class Team(base):
 
     #team_pred_winner = relationship("Game", lazy="noload", foreign_keys="Game.id_predic_winner", back_populates="pred_winner_team")
     #team_winner = relationship("Game", lazy="noload", foreign_keys="Game.id_winner_team", back_populates="winner_team")
-    team_visitor = relationship("Game", lazy="noload", foreign_keys="Game.id_visit_team", back_populates="visit_team")
-    team_home = relationship("Game", lazy="noload", foreign_keys="Game.id_home_team", back_populates="home_team")
+    team_visitor = relationship("Game", lazy="noload", foreign_keys="Game.id_visit_team", overlaps="visit_team")#, back_populates="visit_team")
+    team_home = relationship("Game", lazy="noload", foreign_keys="Game.id_home_team", overlaps="home_team")#, back_populates="home_team")
 
     def __init__(self):
         pass

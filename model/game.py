@@ -24,9 +24,9 @@ class Game(base): #OK
     has_overtime = Column(Boolean)
     attend = Column(Integer)
     arena = Column(String(50))
-     
-    home_team = relationship("Team", lazy="noload", foreign_keys="Game.id_home_team", backref="games_at_home")
-    visit_team = relationship("Team", lazy="noload", foreign_keys="Game.id_visit_team", backref="games_as_visitor")
+    #
+    home_team = relationship("Team", lazy="subquery", foreign_keys="Game.id_home_team")#, backref="games_at_home")
+    visit_team = relationship("Team", lazy="subquery", foreign_keys="Game.id_visit_team")#, backref="games_as_visitor")
     #winner_team = relationship("Team", lazy="noload", foreign_keys="Game.id_winner_team", backref="games_winner")
     #pred_winner_team = relationship("Team", lazy="noload", foreign_keys="Game.id_predic_winner", backref="games_pred_winner")
 

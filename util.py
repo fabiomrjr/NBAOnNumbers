@@ -8,7 +8,7 @@ class util():
     
         switcher = {
             "Jan": 1,
-            "Fev": 2,
+            "Feb": 2,
             "Mar": 3,
             "Apr": 4,
             "May": 5,

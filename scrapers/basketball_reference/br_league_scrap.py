@@ -58,7 +58,10 @@ class BasketballReferenceLeagueScheduleScrap:
             
             if re.search('box_score_text', str(lineDataBS)) != None:
                 result = re.search('a href="(.*)"', str(lineDataBS))
-                dataBoxScoreLink.append(result.group(1))
+                if result == None:
+                    dataBoxScoreLink.append("")
+                else:    
+                    dataBoxScoreLink.append(result.group(1))
             elif re.search('overtimes', str(lineDataBS)) != None:
                 if value == "OT":
                     dataOvertime.append(True)

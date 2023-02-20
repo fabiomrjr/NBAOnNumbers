@@ -1,8 +1,5 @@
 from datetime import datetime as dt
 from datetime import timedelta as td
-from ..model.team import Team
-from ..model.game import Game
-from ..model.player import Player
 from sqlalchemy import Column, Integer, Float, BigInteger, DateTime, ForeignKey, TIME, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
@@ -19,6 +16,7 @@ class PlayerGameStatistic(base):
     id_team = Column(Integer, ForeignKey('team.id_team'))
     id_game = Column(Integer, ForeignKey('game.id_game'))
     #Revisar
+    
     min_play = Column(TIME)
     fg = Column(Integer)
     fga = Column(Integer)
@@ -74,4 +72,4 @@ class PlayerGameStatistic(base):
         self.active = active
 
     def json(self):
-       return {'Need to be implemented' + 'date': self.date.strftime('%b %d %Y %I:%M%p')}\
+       return {'Need to be implemented' + 'date': self.min_play.strftime('%H:%M')}\

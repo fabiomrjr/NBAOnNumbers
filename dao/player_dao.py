@@ -48,7 +48,6 @@ class PlayerDAO():
         dao.startConnection()
         
         try:
-            #stringText = "SELECT * FROM player where name = '" + str(name) + "' and number = '" + str(number) + "'"
             item = dao.session.query(Player).filter(and_(Player.name == str(name))).first()
         except:
             dao.session.rollback()
