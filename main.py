@@ -25,7 +25,8 @@ from db import db
 #GamesDBCreatorService().createGamesByScheduleDF(scheduledf)
 
 startDate = dt.now()
-OddsDBCreatorService.getAndSaveOdds()
-
+#OddsDBCreatorService.getAndSaveNHLOdds()
+#OddsDBCreatorService.getAndSaveNBAOdds()
+OddsDBCreatorService().correctTeamsNames()
 endDate = dt.now()
 print("Finish Schedule Dataframe. Seconds " + str((endDate - startDate).total_seconds()))

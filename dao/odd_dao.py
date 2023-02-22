@@ -11,11 +11,11 @@ class OddDAO():
         #DAO.__init__(self)
         
     def createOdd(id_game, game_date, date, visitor_team_name, home_team_name, visitor_win_odd,
-                 home_win_odd, visitor_spread, home_spread, visitor_win_spread, home_win_spread, total, total_under, total_upper):
+                 home_win_odd, visitor_spread, home_spread, visitor_win_spread, home_win_spread, total, total_under, total_upper, league):
         dao = DAO()
         dao.startConnection()
         c1 = Odd(id_game, game_date, date, visitor_team_name, home_team_name, visitor_win_odd,
-                 home_win_odd, visitor_spread, home_spread, visitor_win_spread, home_win_spread, total, total_under, total_upper)
+                 home_win_odd, visitor_spread, home_spread, visitor_win_spread, home_win_spread, total, total_under, total_upper, league)
 
         try:
             dao.session.add(c1)
@@ -25,3 +25,39 @@ class OddDAO():
             raise
         dao.quitConnection()
         return c1
+    
+    def updateOdd(id_odd, id_game, game_date, date, visitor_team_name, home_team_name, visitor_win_odd,
+                 home_win_odd, visitor_spread, home_spread, visitor_win_spread, home_win_spread, total, total_under, total_upper, league):
+        dao = DAO()
+        dao.startConnection()
+        
+        try:
+            stmt = (update(Odd).where(Odd.id_odd == id_odd)
+                    .values(id_game = id_game, game_date = game_date, date = date, visitor_team_name = visitor_team_name,
+                            home_team_name = home_team_name, visitor_win_odd = visitor_win_odd, home_win_odd = home_win_odd,
+                            visitor_spread = visitor_spread, home_spread = home_spread, visitor_win_spread = visitor_win_spread,
+                            home_win_spread = home_win_spread, total = total, total_under = total_under, total_upper = total_upper,
+                            league = league))
+            dao.session.execute(stmt)
+
+            dao.session.commit()
+            item = dao.session.query(Odd).filter(Odd.id_odd == id_odd).first()
+        
+        except:
+            dao.session.rollback()
+            raise
+        dao.quitConnection()
+        return item
+    
+    def listIncorrectTeamsName():
+        dao = DAO()
+        dao.startConnection()
+        
+        try:
+            item = dao.session.query(Odd).filter(Odd.home_team_name == "").all()
+        except:
+            dao.session.rollback()
+            raise
+        dao.quitConnection()
+        
+        return item

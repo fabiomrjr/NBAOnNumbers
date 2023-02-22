@@ -116,6 +116,7 @@ class db():
             Column('id_game', Integer),
             Column('game_date', DateTime),
             Column('date', DateTime),
+            Column('league', String(5)),
             Column('visitor_team_name', String(80)),
             Column('home_team_name', String(80)),
             Column('visitor_win_odd', Float(precision=2)),

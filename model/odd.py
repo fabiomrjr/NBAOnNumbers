@@ -13,6 +13,7 @@ class Odd(base):#OK
     id_game = Column(Integer)
     game_date = Column(DateTime)
     date = Column(DateTime)
+    league = Column(String(5))
     visitor_team_name = Column(String(80))
     home_team_name = Column(String(80))
     visitor_win_odd = Column(Float(precision=2))
@@ -29,7 +30,7 @@ class Odd(base):#OK
         pass
 
     def __init__(self, id_game,game_date, date, visitor_team_name, home_team_name, visitor_win_odd,
-                 home_win_odd, visitor_spread, home_spread, visitor_win_spread, home_win_spread, total, total_under, total_upper):
+                 home_win_odd, visitor_spread, home_spread, visitor_win_spread, home_win_spread, total, total_under, total_upper, league):
         self.id_game = id_game
         self.game_date = game_date
         self.date = date
@@ -44,6 +45,7 @@ class Odd(base):#OK
         self.total = total
         self.total_under = total_under
         self.total_upper = total_upper
+        self.league = league
 
     def json(self):
        return {'Need to be implemented' + 'date': self.date.strftime('%b %d %Y %I:%M%p')}
