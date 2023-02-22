@@ -23,10 +23,12 @@ from db import db
 #Prepar Games
 #scheduledf = BasketballReferenceLeagueScheduleScrap().checkAllSchedule('/leagues/NBA_2023_games-april.html')
 #GamesDBCreatorService().createGamesByScheduleDF(scheduledf)
+#Otencao de Odds e correcao dos nomes dos times
+OddsDBCreatorService.getAndSaveNHLOdds()
+OddsDBCreatorService.getAndSaveNBAOdds()
 
 startDate = dt.now()
-#OddsDBCreatorService.getAndSaveNHLOdds()
-#OddsDBCreatorService.getAndSaveNBAOdds()
-OddsDBCreatorService().correctTeamsNames()
+
+
 endDate = dt.now()
 print("Finish Schedule Dataframe. Seconds " + str((endDate - startDate).total_seconds()))
