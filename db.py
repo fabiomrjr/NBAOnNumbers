@@ -124,5 +124,24 @@ class db():
             Column('pts_media', Integer)
             #Campos a serem analisados jogadores
         )
-
+        
+        odds = Table(
+            'odds', self.meta,
+            Column('id_odd', Integer, primary_key=True, autoincrement=True),
+            Column('id_game', Integer),
+            Column('game_date', DateTime),
+            Column('date', DateTime),
+            Column('league', String(5)),
+            Column('visitor_team_name', String(80)),
+            Column('home_team_name', String(80)),
+            Column('visitor_win_odd', Float(precision=2)),
+            Column('home_win_odd', Float(precision=2)),
+            Column('visitor_spread', Float(precision=2)),
+            Column('home_spread', Float(precision=2)),
+            Column('visitor_win_spread', Float(precision=2)),
+            Column('home_win_spread', Float(precision=2)),
+            Column('total', Float(precision=2)),
+            Column('total_under', Float(precision=2)),
+            Column('total_upper', Float(precision=2))
+        )
         self.meta.create_all(self.engine)
