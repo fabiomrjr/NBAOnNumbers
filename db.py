@@ -54,28 +54,43 @@ class db():
             Column('id_player', Integer),
             Column('id_game', Integer),
             Column('id_team', Integer),
-            
             Column('min_play', TIME),
             Column('fg', Integer),
             Column('fga', Integer),
-            Column('fg_perc', Integer),
-            Column('three_pts', Integer),
-            Column('three_pts_att', Integer),
-            Column('three_pts_perc', Integer),
+            Column('fg_perc', Float(precision=3)),#FG%
+            Column('three_pts', Integer),#3P
+            Column('three_pts_att', Integer),#3PA
+            Column('three_pts_perc', Float(precision=3)),#3P%
             Column('ft', Integer),
             Column('fta', Integer),
-            Column('ft_perc', Integer),
-            Column('offense_rebound', Integer),
-            Column('defense_rebound', Integer),
-            Column('total_rebound', Integer),
-            Column('assists', Integer),
-            Column('steals', Integer),
-            Column('blocks', Integer),
-            Column('turnovers', Integer),
-            Column('personal_fouls', Integer),
+            Column('ft_perc', Float(precision=3)),
+            Column('offense_rebound', Integer),#ORB
+            Column('defense_rebound', Integer),#DRB
+            Column('total_rebound', Integer),#TRB
+            Column('assists', Integer),#AST
+            Column('steals', Integer),#STL
+            Column('blocks', Integer),#BLK
+            Column('turnovers', Integer),#TOV
+            Column('personal_fouls', Integer),#PF
             Column('pts', Integer),
-            Column('plus_minos', Integer),
-            Column('active', Boolean)
+            Column('plus_minos', Integer),#+/-
+            Column('active', Boolean),
+            #Advanced
+            Column('ts_perc', Float(precision=3)),
+            Column('efg_perc', Float(precision=3)),
+            Column('threepar_perc', Float(precision=3)),
+            Column('ftr_perc', Float(precision=3)),
+            Column('orb_perc', Float(precision=3)),
+            Column('drb_perc', Float(precision=3)),
+            Column('trb_perc', Float(precision=3)),
+            Column('ast_perc', Float(precision=3)),
+            Column('stl_perc', Float(precision=3)),
+            Column('blk_perc', Float(precision=3)),
+            Column('tov_perc', Float(precision=3)),
+            Column('usg_perc', Float(precision=3)),
+            Column('or_tg', Integer),
+            Column('dr_tg', Integer),
+            Column('bpm', Float(precision=3))
         )
 
         team_game_statistic = Table(
@@ -111,8 +126,3 @@ class db():
         )
 
         self.meta.create_all(self.engine)
-
-        #column = Column('macdsub', Float(precision=8))
-        #column_name = column.compile(dialect=self.engine.dialect)
-        #column_type = column.type.compile(self.engine.dialect)
-        #self.engine.execute('ALTER TABLE %s ADD COLUMN %s %s' % ('candlesbyminute', column_name, column_type))

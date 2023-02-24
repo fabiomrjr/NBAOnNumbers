@@ -6,21 +6,22 @@ print(d1)
 
 data1 = {
   "age": [16, 14, 10],
-  "qualified": [True, True, True]
+  "qualified": [2,1,2]
 }
 df1 = pd.DataFrame(data1)
 
 data2 = {
   "age": [55, 40],
-  "qualified": [True, False]
+  "qualified": [1,2]
 }
 df2 = pd.DataFrame(data2)
 
-a = ["a" , "b"]
-b = ["t" , "g"]
+a = [77, 3]
+#b = ["t" , "g"]
 
-c = [a, b]
-print(c)
+#c = [a, b]
+#print(c)
 
 newdf = df1.append(df2)
-#print(newdf)
+newdf.loc[len(newdf)] = a
+print(newdf)

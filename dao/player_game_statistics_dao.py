@@ -70,17 +70,24 @@ class PlayerGameStatsDAO():
 
         return item
     
-    def createOrUpdatePlayerGameStatistic(self, team_id, game_id, player_id, min_play, fg, fga, fg_perc, three_pts, three_pts_att, three_pts_perc, 
-                 ft, fta, ft_perc, offense_rebound, defense_rebound, total_rebound, assists, steals, blocks, turnovers,
-                 personal_fouls, pts, plus_minor, active):
+    def createOrUpdatePlayerGameStatistic(self, team_id, game_id, player_id, min_play, fg, fga, fg_perc, three_pts, three_pts_att, 
+                                          three_pts_perc, ft, fta, ft_perc, offense_rebound, defense_rebound, total_rebound, 
+                                          assists, steals, blocks, turnovers, personal_fouls, pts, plus_minos, active, ts_perc, 
+                                          efg_perc, threepar_perc, ftr_perc, orb_perc, drb_perc, trb_perc, ast_perc, stl_perc, 
+                                          blk_perc, tov_perc, usg_perc, or_tg, dr_tg, bpm):
         
         PlayerGameStatistic = self.getPlayerGameStatsByPlayerTeamAndGame(team_id, game_id, player_id)
         
         if PlayerGameStatistic != None:
-            return self.updatePlayerGameStatistic(PlayerGameStatistic.id_player_game_statistic, min_play, fg, fga, fg_perc, three_pts, three_pts_att, three_pts_perc, 
-                 ft, fta, ft_perc, offense_rebound, defense_rebound, total_rebound, assists, steals, blocks, turnovers,
-                 personal_fouls, pts, plus_minor, active)
+            return self.updatePlayerGameStatistic(PlayerGameStatistic.id_player_game_statistic, min_play, fg, fga, fg_perc, three_pts, 
+                                                  three_pts_att, three_pts_perc, ft, fta, ft_perc, offense_rebound, defense_rebound, 
+                                                  total_rebound, assists, steals, blocks, turnovers, personal_fouls, pts, plus_minos, 
+                                                  active, ts_perc, efg_perc, threepar_perc, ftr_perc, orb_perc, drb_perc, trb_perc, 
+                                                  ast_perc, stl_perc, blk_perc, tov_perc, usg_perc, or_tg, dr_tg, bpm)
         
-        return self.createPlayerGameStatistics(team_id, game_id, player_id, min_play, fg, fga, fg_perc, three_pts, three_pts_att, three_pts_perc, 
-                 ft, fta, ft_perc, offense_rebound, defense_rebound, total_rebound, assists, steals, blocks, turnovers,
-                 personal_fouls, pts, plus_minor, active)
+        return self.createPlayerGameStatistics(team_id, game_id, player_id, min_play, fg, fga, fg_perc, three_pts, 
+                                               three_pts_att, three_pts_perc, ft, fta, ft_perc, offense_rebound, 
+                                               defense_rebound, total_rebound, assists, steals, blocks, turnovers, 
+                                               personal_fouls, pts, plus_minos, active, ts_perc, efg_perc, threepar_perc, 
+                                               ftr_perc, orb_perc, drb_perc, trb_perc, ast_perc, stl_perc, blk_perc, 
+                                               tov_perc, usg_perc, or_tg, dr_tg, bpm)
